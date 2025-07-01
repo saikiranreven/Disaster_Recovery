@@ -11,5 +11,5 @@ variable "secondary_region" {
 }
 
 variable "dns_domain" {
-  default = "themulti.xyz"
+  default = "themulti.xyz."
 }
