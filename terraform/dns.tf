@@ -8,7 +8,7 @@ resource "google_dns_record_set" "primary_record" {
   type         = "A"
   ttl          = 60
   managed_zone = google_dns_managed_zone.dr_zone.name
-  rrdatas      = ["1.2.3.4"]
+  rrdatas      = [google_compute_address.lb_ip_primary.address]
 }
 
 resource "google_dns_record_set" "secondary_record" {
@@ -16,5 +16,5 @@ resource "google_dns_record_set" "secondary_record" {
   type         = "A"
   ttl          = 60
   managed_zone = google_dns_managed_zone.dr_zone.name
-  rrdatas      = ["5.6.7.8"]
+  rrdatas      = [google_compute_address.lb_ip_secondary.address]
 }
