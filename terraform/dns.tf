@@ -8,13 +8,13 @@ resource "google_dns_record_set" "primary_record" {
   type         = "A"
   ttl          = 60
   managed_zone = google_dns_managed_zone.dr_zone.name
-  rrdatas      = [google_compute_address.lb_ip_primary.address]
+  rrdatas      = [google_compute_global_address.primary_ip.address]  # Updated
 }
 
-resource "google_dns_record_set" "secondary_record" {
+resource "google_dns_record_set" "failover_record" {
   name         = "failover.${var.dns_domain}"
   type         = "A"
   ttl          = 60
   managed_zone = google_dns_managed_zone.dr_zone.name
-  rrdatas      = [google_compute_address.lb_ip_secondary.address]
+  rrdatas      = [google_compute_global_address.secondary_ip.address]  # Updated
 }
