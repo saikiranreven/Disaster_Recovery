@@ -1,13 +1,12 @@
-# Reserve static external IPs for Load Balancers
 resource "google_compute_address" "lb_ip_primary" {
   name   = "lb-ip-primary"
-  region = var.primary_region
+  global = true
 }
 
 resource "google_compute_address" "lb_ip_secondary" {
   provider = google.secondary
   name     = "lb-ip-secondary"
-  region   = var.secondary_region
+  global   = true
 }
 
 # Backend buckets for static content serving (no health checks required)
