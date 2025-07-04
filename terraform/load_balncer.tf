@@ -1,12 +1,12 @@
 resource "google_compute_address" "lb_ip_primary" {
-  name   = "lb-ip-primary"
-  global = true
+  name = "lb-ip-primary"
+  # NO region attribute here means global IP
 }
 
 resource "google_compute_address" "lb_ip_secondary" {
   provider = google.secondary
   name     = "lb-ip-secondary"
-  global   = true
+  # NO region attribute here means global IP
 }
 
 # Backend buckets for static content serving (no health checks required)
